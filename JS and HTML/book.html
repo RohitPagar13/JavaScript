@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Store</title>
+    <style>
+        .cart {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Book Store</h1>
+
+<div>
+    <h2>List of books -> tic to buy it</h2>
+    <ul id="bookList">
+        <li><input type="checkbox" id="book1" value="20.00"> <label for="book1">Book 1 - $20.00</label></li>
+        <li><input type="checkbox" id="book2" value="15.00"> <label for="book2">Book 2 - $15.00</label></li>
+        <li><input type="checkbox" id="book3" value="25.00"> <label for="book3">Book 3 - $25.00</label></li>
+        <li><input type="checkbox" id="book4" value="18.00"> <label for="book4">Book 4 - $18.00</label></li>
+        <!-- Add more books as needed -->
+    </ul>
+    <button onclick="updateTotalPrice()">Total</button>
+</div>
+
+<div class="cart">
+    <h2>Total Price</h2>
+    <p>Total Price: $<span id="totalPrice">0.00</span></p>
+</div>
+
+<script>
+    function updateTotalPrice() {
+        const bookList = document.getElementById('bookList');
+        const checkboxes = bookList.querySelectorAll('input[type="checkbox"]:checked');
+
+        let totalPrice = 0;
+
+        checkboxes.forEach(checkbox => {
+            const price = parseFloat(checkbox.value);
+            totalPrice += price;
+        });
+
+        // Update the total price display
+        const totalSpan = document.getElementById('totalPrice');
+        totalSpan.textContent = totalPrice.toFixed(2);
+    }
+</script>
+
+</body>
+</html>
